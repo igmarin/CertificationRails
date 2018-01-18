@@ -15,7 +15,7 @@ class Solution
   # using the default.
   def self.mongo_client
     url=ENV['MONGO_URL'] ||= MONGO_URL
-    database=ENV['MONGO_DATABASE'] ||= MONGO_DATABASE 
+    database=ENV['MONGO_DATABASE'] ||= MONGO_DATABASE
     db = Mongo::Client.new(url)
     @@db=db.use(database)
   end
@@ -26,9 +26,9 @@ class Solution
     collection=ENV['RACE_COLLECTION'] ||= RACE_COLLECTION
     return mongo_client[collection]
   end
-  
+
   # helper method that will load a file and return a parsed JSON document as a hash
-  def self.load_hash(file_path) 
+  def self.load_hash(file_path)
     file=File.read(file_path)
     JSON.parse(file)
   end
@@ -46,7 +46,7 @@ class Solution
     #place solution here
   end
 
-  def load_collection(file_path) 
+  def load_collection(file_path)
     #place solution here
   end
 
@@ -70,7 +70,7 @@ class Solution
   # Lecture 3: Paging
   #
 
-  def find_group_results(group, offset, limit) 
+  def find_group_results(group, offset, limit)
     #place solution here
   end
 
@@ -78,18 +78,18 @@ class Solution
   # Lecture 4: Find By Criteria
   #
 
-  def find_between(min, max) 
+  def find_between(min, max)
     #place solution here
   end
 
-  def find_by_letter(letter, offset, limit) 
+  def find_by_letter(letter, offset, limit)
     #place solution here
   end
 
   #
   # Lecture 5: Updates
   #
-  
+
   def update_racer(racer)
     #place solution here
   end
