@@ -16,8 +16,8 @@ describe Solution do
 
   around :each do |example|
     if $continue
-      $continue = false 
-      example.run 
+      $continue = false
+      example.run
       $continue = true unless example.exception
     else
       example.skip
@@ -26,12 +26,12 @@ describe Solution do
 
   before :each do
     client = Mongo::Client.new(ENV['MONGO_URL'] ||= MONGO_URL)
-    db = client.use(ENV['MONGO_DATABASE'] ||= MONGO_DATABASE) 
-    @race_col = db[ENV['RACE_COLLECTION'] ||= RACE_COLLECTION] 
+    db = client.use(ENV['MONGO_DATABASE'] ||= MONGO_DATABASE)
+    @race_col = db[ENV['RACE_COLLECTION'] ||= RACE_COLLECTION]
   end
 
   # helper method that will load a file and return a parsed JSON document as a hash
-  def load_hash(file_path) 
+  def load_hash(file_path)
     file=File.read(file_path)
     JSON.parse(file)
   end

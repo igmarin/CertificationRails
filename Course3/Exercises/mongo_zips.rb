@@ -18,6 +18,7 @@ db = db.use('test')
 
 gto   = db[:zips].find(state: "GTO")
 magic = db[:zips].find(city: "Magic Land")
+biggest = db[:zips].find(pop: { "$gt": 1000000 }).first
 puts "\nDatabase name: #{ db.database.name }\n"
 puts "*" * 20
 puts "\nFirst: #{ db[:zips].find.first } \n"
@@ -25,3 +26,6 @@ puts "*" * 20
 puts "\nMagic Cities #{ magic.count}: #{ magic.to_a }\n"
 puts "*" * 20
 puts "\nGto cities #{ gto.count }: #{ gto.to_a }"
+
+puts "*" * 20
+puts "\nBig city #{ biggest["city"] }: population #{ biggest["pop"] }"
