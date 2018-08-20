@@ -91,13 +91,13 @@ class Zip
 
     #get a count of all documents in the collection
     total=all(params, sort, 0, 1).count
-    
+
     WillPaginate::Collection.create(page, limit, total) do |pager|
       pager.replace(zips)
-    end    
+    end
   end
 
-  # locate a specific document. Use initialize(hash) on the result to 
+  # locate a specific document. Use initialize(hash) on the result to
   # get in class instance form
   def self.find id
     Rails.logger.debug {"getting zip #{id}"}
@@ -106,10 +106,10 @@ class Zip
                   .projection({_id:true, city:true, state:true, pop:true})
                   .first
     return doc.nil? ? nil : Zip.new(doc)
-  end 
+  end
 
   # create a new document using the current instance
-  def save 
+  def save
     Rails.logger.debug {"saving #{self}"}
 
     result=self.class.collection
@@ -136,6 +136,6 @@ class Zip
 
     self.class.collection
               .find(_id:@id)
-              .delete_one   
-  end  
+              .delete_one
+  end
 end
